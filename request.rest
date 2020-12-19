@@ -1,0 +1,4 @@
+GET http://localhost:3000/news/SaylaniNewsGet?page=1&limit=3&date=undefined
+
+
+# ?date=26-11-2020
