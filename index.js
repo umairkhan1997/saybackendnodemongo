@@ -31,7 +31,9 @@ mongoose.connection.on("error", (err) => {
 // app.get('/',(req,res)=>{
 // res.send('welcome to server');
 // })
-
+app.get('/', (req, res) => {
+  res.send("Express Docker Heroku Container Registry")
+})
 app.listen(port, () => {
   console.log("server running");
 });
