@@ -4,7 +4,7 @@ const router = express.Router();
 router.use("/home", require("./HomeRouter/HomeRoute"));
 router.use("/media", require("./mediaRouter/MediaRoute"));
 router.use("/project", require("./projectRouter/projectRoute"));
-router.use("/smit", require("./smitRouter/SmitRoute"));
+router.use("/smit", require("./SmitRouter/SmitRoute"));
 router.use("/dastarkhwan", require("./DastarkhwanRouter/DastarkhwanRoute"));
 router.use("/roPlant", require("./RoPlantRouter/RoPlantRoute"));
 router.use(
