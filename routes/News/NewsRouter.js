@@ -31,7 +31,7 @@ function paginatedData(model) {
                 results.next = { page: pages + 1, limit: limits }
             }
             try {
-
+                results.total = await saylaniNews.find();
                 results.result = await data.find().limit(limits).skip(startInx).exec()
                 res.paginatedResult = results;
                 next();

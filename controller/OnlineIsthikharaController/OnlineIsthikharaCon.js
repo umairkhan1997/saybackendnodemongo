@@ -10,7 +10,7 @@ OnlineIsthikharaAdd = async (req, res) => {
     contact,
     istDetail,
   } = req.body;
-
+  console.log(req.body, 'req.body')
   try {
     const result = new OnlineIsthikharaModel({
       istType,
@@ -21,10 +21,20 @@ OnlineIsthikharaAdd = async (req, res) => {
       contact,
       istDetail,
     });
-    await result.save();
-    res.send({ message: "Online Isthikhara Added" });
+    await result.save()
+      .then(saved => {
+        return res.status(200).json({ success: true, message: "Online Isthikhara Added" });
+      }).catch(error => {
+        return res
+          .status(422)
+          .json({ success: false, message: error.message });
+      })
+    // return res.status(200).json({ success: true, message: "Online Isthikhara Added" });
+    // res.send({ message: "Online Isthikhara Added" });
   } catch (err) {
-    return res.status(422).send(err + "err");
+    return res
+      .status(422)
+      .json({ success: false, message: err.message });
   }
 };
 
