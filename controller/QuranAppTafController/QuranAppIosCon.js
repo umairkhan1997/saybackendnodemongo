@@ -19,14 +19,15 @@ QuranAppIosAdd = async (req, res) => {
     return res.status(400).json(checkField("App Status"));
   } else {
     try {
-      const fileStr = logo;
-      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-        upload_preset: "prime-asset",
-      });
+      // const fileStr = logo;
+      // const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      //   upload_preset: "prime-asset",
+      // });
       // console.log(uploadResponse, "successfully image add");
       try {
         const result = new QuranAppIosSchema({
-          logo: uploadResponse.url,
+          // logo: uploadResponse.url,
+          logo,
           appName,
           publisher,
           curVer,
