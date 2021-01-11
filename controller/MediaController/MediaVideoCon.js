@@ -1,10 +1,13 @@
 const MediaVideoSchema = require("../../model/mediaModel/mediaModelSchema");
 
 mediaVideosAdd = async (req, res) => {
-  const { medUrl, medName } = req.body;
+  const { medUrl, medName, medDate } = req.body;
 
   try {
-    const result = new MediaVideoSchema({ medUrl, medName });
+    let epoch = new Date(req.body.medDate).getTime()
+    console.log(epoch);
+    let medCat = epoch;
+    const result = new MediaVideoSchema({ medUrl, medName, medCat, medDate });
     await result.save();
     res.send({ message: "New Video Added" });
   } catch (err) {
@@ -13,7 +16,7 @@ mediaVideosAdd = async (req, res) => {
 };
 
 mediaAllVideoGet = async (req, res) => {
-  const allVid = await MediaVideoSchema.find();
+  const allVid = await MediaVideoSchema.find().sort({ medDate: -1 })
   res.status(200).json({
     success: true,
     data: allVid,
@@ -73,3 +76,4 @@ module.exports = {
   mediaVideosUpdate,
   mediaVideoDel,
 };
+

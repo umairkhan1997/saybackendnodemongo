@@ -10,6 +10,8 @@ const SmitEventCon = require("../../controller/SmitController/SmitEventCon");
 const SmitNotificationCon = require("../../controller/SmitController/SmitNotificationCon");
 const SmitAdmissFormCon = require("../../controller/SmitController/SmitAdmissFormCon");
 const smitAFMiddle = require("../../middleware/smitAdmissFormMiddle/smitAFMiddle");
+const smitWorkShopCon = require("../../controller/SmitController/smitWorkShop");
+
 // const SmitEventModel = require("../../model/SmitModel/SmitEventModel");
 
 
@@ -55,6 +57,10 @@ router.delete(
 );
 
 //SMIT EVENTS
+
+router.post("/smitWorkshopAdd", smitWorkShopCon.smitWorkshopAdd);
+router.get("/smitWorkshopGet", smitWorkShopCon.smitWorkshopGet);
+router.delete("/smitWorkshopDel", smitWorkShopCon.smitWorkshopDel);
 
 router.post("/SmitEventadd", upload.array("imgCollection", 12), SmitEventCon.SmitEventadd);
 

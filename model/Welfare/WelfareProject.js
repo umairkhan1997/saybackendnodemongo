@@ -5,19 +5,14 @@ const WelfareProject = mongoose.Schema({
     type: String,
     required: true,
   },
-  WelHeadTwo: {
-    type: String,
-    unique: true,
-    required: true,
-  },
-  welImg: {
+  welAmount: {
     type: String,
     required: true,
   },
-  welDesc: {
+  welQuan: {
     type: String,
     required: true,
-  },
+  }
 });
 
 const WelfareProjectSchema = mongoose.model(

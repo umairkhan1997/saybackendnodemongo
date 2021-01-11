@@ -1,39 +1,32 @@
 const WelfareProjectModel = require("../../model/Welfare/WelfareProject");
-const cloudinary = require("../../cloudinary");
 const checkField = require("../../FieldValidation/checkField");
 
 WelfareProjectAdd = async (req, res) => {
-  const { WelHead, WelHeadTwo, welImg, welDesc } = req.body;
+  const { WelHead, welAmount, welQuan } = req.body;
   // console.log(data, "imgurl");
   if (!WelHead) {
     return res.status(400).json(checkField("Welfare Heading"));
-  } else if (!WelHeadTwo) {
-    return res.status(400).json(checkField("Welfare Second Heading"));
-  } else if (!welImg) {
+  } else if (!welAmount) {
     return res.status(400).json(checkField("Welfare Image"));
-  } else if (!welDesc) {
+  } else if (!welQuan) {
     return res.status(400).json(checkField("Welfare Description"));
   } else {
     try {
-      const fileStr = welImg;
-      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-        upload_preset: "prime-asset",
+      const result = new WelfareProjectModel({
+        WelHead, welAmount, welQuan
       });
-      try {
-        const result = new WelfareProjectModel({
-          WelHead,
-          WelHeadTwo,
-          welImg: uploadResponse.url,
-          welDesc,
-        });
-        await result.save();
-        return res.status(200).json({ message: "Welfare Added" });
-      } catch (err) {
-        return res.status(422).json({ message: err.message });
-      }
+      await result.save()
+        .then(saved => {
+          return res.status(200).json({ success: true, message: "Welfare Added", data: saved });
+        }).catch(error => {
+          return res
+            .status(422)
+            .json({ success: false, message: error.message });
+        })
     } catch (err) {
-      return res.status(500).json({ message: err.message });
+      return res.status(422).json({ message: err.message });
     }
+
   }
 };
 

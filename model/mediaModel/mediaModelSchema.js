@@ -3,12 +3,19 @@ const mongoose = require("mongoose");
 const Media = mongoose.Schema({
   medUrl: {
     type: String,
-    unique: true,
     required: true,
   },
   medName: {
     type: String,
-    unique: true,
+    required: true,
+  },
+  medCat: {
+    type: String,
+    required: true,
+  },
+  medDate: {
+    type: Date,
+    default: Date.now,
     required: true,
   },
 });
