@@ -5,7 +5,6 @@ mediaVideosAdd = async (req, res) => {
 
   try {
     let epoch = new Date(req.body.medDate).getTime()
-    console.log(epoch);
     let medCat = epoch;
     const result = new MediaVideoSchema({ medUrl, medName, medCat, medDate });
     await result.save();
