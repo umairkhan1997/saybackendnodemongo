@@ -1,4 +1,4 @@
-const WelfareServiceModel = require("../../model/Welfare/WelfareService");
+const WelfareServiceModel = require("../../model/Welfare/welfareService");
 const checkField = require("../../FieldValidation/checkField");
 
 WelfareServiceAdd = async (req, res) => {
