@@ -1,10 +1,10 @@
 const SmitStdCounModel = require("../../model/SmitModel/SmitStdCounModel");
 
 SmitCounAdd = async (req, res) => {
-  const { counName, counStrNum, counEndNum } = req.body;
+  const { counName, counStrNum, counEndNum, icon } = req.body;
 
   try {
-    const result = new SmitStdCounModel({ counName, counStrNum, counEndNum });
+    const result = new SmitStdCounModel({ counName, counStrNum, counEndNum, icon });
     await result.save();
     res.send({ message: "SMIT Count Added" });
   } catch (err) {

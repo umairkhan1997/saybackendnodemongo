@@ -3,17 +3,18 @@ const mongoose = require("mongoose");
 const SmitStdCoun = mongoose.Schema({
   counName: {
     type: String,
-    unique: true,
     required: true,
   },
   counStrNum: {
     type: String,
-    unique: true,
     required: true,
   },
   counEndNum: {
     type: String,
-    unique: true,
+    required: true,
+  },
+  icon: {
+    type: String,
     required: true,
   },
 });

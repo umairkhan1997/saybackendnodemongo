@@ -1,27 +1,23 @@
 const mongoose = require("mongoose");
 
-const SmitFaculty = mongoose.Schema({
+const SmitTeachers = mongoose.Schema({
   facName: {
     type: String,
-    unique: true,
     required: true,
   },
   facDesig: {
     type: String,
-    unique: true,
     required: true,
   },
   facImgUrl: {
     type: String,
-    unique: true,
     required: true,
   },
-  facDescrip: {
+  course: {
     type: String,
-    unique: true,
     required: true,
   },
 });
 
-const SmitFacultySchema = mongoose.model("SmitFacultySchema", SmitFaculty);
-module.exports = SmitFacultySchema;
+const SmitTeachersSchema = mongoose.model("SmitTeachersSchema", SmitTeachers);
+module.exports = SmitTeachersSchema;

@@ -1,57 +1,60 @@
-const SmitFacultyModel = require("../../model/SmitModel/SmitFacultyModel");
+const SmitTeachersModel = require("../../model/SmitModel/SmitTeachersModel");
 const cloudinary = require("../../cloudinary");
 const checkField = require("../../FieldValidation/checkField");
 
-SmitFacultyadd = async (req, res) => {
-  const { data, facName, facDesig, facDescrip } = req.body;
+SmitTeachersadd = async (req, res) => {
+  const { data, facName, facDesig, course } = req.body;
   // console.log(data, "imgurl");
   if (!facName) {
     return res.status(400).json(checkField("faculty Name"));
   } else if (!facDesig) {
     return res.status(400).json(checkField("faculty Designation"));
-  } else if (!facDescrip) {
-    return res.status(400).json(checkField("faculty Description"));
+  } else if (!course) {
+    return res.status(400).json(checkField("faculty course"));
   } else if (!data) {
     return res.status(400).json(checkField("faculty Image"));
   } else {
+    // try {
+    //   const fileStr = req.body.data;
+    //   const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+    //     upload_preset: "prime-asset",
+    //   });
+    // console.log(uploadResponse, "successfully image add");
     try {
-      const fileStr = req.body.data;
-      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-        upload_preset: "prime-asset",
+      const result = new SmitTeachersModel({
+        facName,
+        facDesig,
+        // facImgUrl: uploadResponse.url,
+        facImgUrl: data,
+        course,
       });
-      // console.log(uploadResponse, "successfully image add");
-      try {
-        const result = new SmitFacultyModel({
-          facName,
-          facDesig,
-          facImgUrl: uploadResponse.url,
-          facDescrip,
-        });
-        await result.save();
-        return res.status(200).json({ message: "Faculty Added" });
-        // console.log("Faculty Added");
-      } catch (err) {
-        return res.status(422).send({ message: err.message });
-        // console.log(err, "err");
-      }
-    } catch (err) {
-      // console.error(err, "err");
-      return res.status(500).json({ message: err.message });
-      // console.log(err, "err 500");
+      await result.save();
+      return res.status(200).json({ message: "Faculty Added" });
+      // console.log("Faculty Added");
+    }
+    catch (err) {
+      return res.status(422).send({ message: err.message });
+      // console.log(err, "err");
     }
   }
+  //   catch (err) {
+  //     // console.error(err, "err");
+  //     return res.status(500).json({ message: err.message });
+  //     // console.log(err, "err 500");
+  //   }
+  // }
 };
 
-SmitFacultyGet = async (req, res) => {
+SmitTeachersGet = async (req, res) => {
   // checkField;
-  const result = await SmitFacultyModel.find();
+  const result = await SmitTeachersModel.find();
   res.status(200).json({
     success: true,
     data: result,
   });
 };
 
-SmitFacultyUpdate = async (req, res, next) => {
+SmitTeachersUpdate = async (req, res, next) => {
   const { id, data, facName, facDesig, facDescrip } = req.body;
   if (!facName) {
     return res.status(400).json(checkField("faculty Name"));
@@ -65,7 +68,7 @@ SmitFacultyUpdate = async (req, res, next) => {
     return res.status(400).json(checkField("faculty Image"));
   } else {
     try {
-      let imgUrl = await SmitFacultyModel.findById(req.body.id);
+      let imgUrl = await SmitTeachersModel.findById(req.body.id);
       const fileStr = req.body.data;
       const uploadResponse = await cloudinary.uploader.upload(fileStr, {
         upload_preset: "prime-asset",
@@ -85,7 +88,7 @@ SmitFacultyUpdate = async (req, res, next) => {
             facImgUrl: uploadResponse.url,
             facDescrip,
           };
-          imgUrl = await SmitFacultyModel.findByIdAndUpdate(
+          imgUrl = await SmitTeachersModel.findByIdAndUpdate(
             req.body.id,
             facData,
             {
@@ -112,12 +115,12 @@ SmitFacultyUpdate = async (req, res, next) => {
   }
 };
 
-SmitFacultyDel = async (req, res, next) => {
+SmitTeachersDel = async (req, res, next) => {
   const { id } = req.body;
   if (!id) {
     return res.status(400).json(checkField("faculty ID"));
   } else {
-    let imgUrl = await SmitFacultyModel.findById(id);
+    let imgUrl = await SmitTeachersModel.findById(id);
     try {
       if (!imgUrl) {
         return res.status(404).json({
@@ -125,7 +128,7 @@ SmitFacultyDel = async (req, res, next) => {
           message: "Faculty Not Found",
         });
       } else {
-        await SmitFacultyModel.findByIdAndDelete(id, function (err, result) {
+        await SmitTeachersModel.findByIdAndDelete(id, function (err, result) {
           if (err) {
             return res.status(422).json({
               success: false,
@@ -146,8 +149,8 @@ SmitFacultyDel = async (req, res, next) => {
 };
 
 module.exports = {
-  SmitFacultyadd,
-  SmitFacultyGet,
-  SmitFacultyUpdate,
-  SmitFacultyDel,
+  SmitTeachersadd,
+  SmitTeachersGet,
+  SmitTeachersUpdate,
+  SmitTeachersDel,
 };

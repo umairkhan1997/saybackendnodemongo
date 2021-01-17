@@ -26,5 +26,6 @@ router.use(
 router.use("/Books", require("./BooksRouter/BookRoute"));
 router.use('/news', require("./News/NewsRouter"));
 router.use('/donation', require("./donationRouter/donationRoute"));
+router.use('/greenhouse', require("./greenHouseRouter/greenHouseRoute"));
 
 module.exports = router;

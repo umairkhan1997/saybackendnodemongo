@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const SmitFacultyCon = require("../../controller/SmitController/SmitFaculty");
+const SmitTeachersModelCon = require("../../controller/SmitController/SmitTeachers");
 const SmitStdCounCon = require("../../controller/SmitController/SmitStdCounCon");
 const SmitCoursesCon = require("../../controller/SmitController/SmitCoursesCon");
 const SmitContactCon = require("../../controller/SmitController/SmitContactCon");
@@ -11,7 +11,8 @@ const SmitNotificationCon = require("../../controller/SmitController/SmitNotific
 const SmitAdmissFormCon = require("../../controller/SmitController/SmitAdmissFormCon");
 const smitAFMiddle = require("../../middleware/smitAdmissFormMiddle/smitAFMiddle");
 const smitWorkShopCon = require("../../controller/SmitController/smitWorkShop");
-
+const smitFacultyCourseCon = require("../../controller/SmitController/smitFacultyCourseCon");
+const smitSuccessStoriesCon = require("../../controller/SmitController/smitSuccessStoriesCon")
 // const SmitEventModel = require("../../model/SmitModel/SmitEventModel");
 
 
@@ -21,13 +22,13 @@ const upload = require('../../multer')
 
 
 
-router.post("/SmitFacultyadd", SmitFacultyCon.SmitFacultyadd);
-router.get("/SmitFacultyGet", SmitFacultyCon.SmitFacultyGet);
-router.put("/SmitFacultyUpdate", SmitFacultyCon.SmitFacultyUpdate);
-router.delete("/SmitFacultyDel", SmitFacultyCon.SmitFacultyDel);
+router.post("/SmitFacultyadd", SmitTeachersModelCon.SmitTeachersadd);
+router.get("/SmitFacultyGet", SmitTeachersModelCon.SmitTeachersGet);
+router.put("/SmitFacultyUpdate", SmitTeachersModelCon.SmitTeachersUpdate);
+router.delete("/SmitFacultyDel", SmitTeachersModelCon.SmitTeachersDel);
 
 // SMIT Student Counts ROUTES
-router.post("/SmitStdCounCon", SmitStdCounCon.SmitCounAdd);
+router.post("/SmitCounAdd", SmitStdCounCon.SmitCounAdd);
 router.get("/SmitCounGet", SmitStdCounCon.SmitCounGet);
 router.put("/SmitCounUpdate", SmitStdCounCon.SmitCounUpdate);
 router.delete("/SmitCounDel", SmitStdCounCon.SmitCounDel);
@@ -72,6 +73,18 @@ router.get('/smitNotificationGet', SmitNotificationCon.smitNotificationGet);
 
 
 router.post('/SmitAdmissFormadd', upload.array("imgCollection", 12), SmitAdmissFormCon.SmitAdmissFormadd);
+
+/////SMIT FACULTY COURSES API
+
+
+router.post('/smitFacultyCourseAdd', smitFacultyCourseCon.smitFacultyCourseAdd)
+router.get('/smitFacultyCourseGet', smitFacultyCourseCon.smitFacultyCourseGet);
+
+
+/////SMIT Success Stories API
+
+router.post('/smitSuccessStoriesAdd', smitSuccessStoriesCon.smitSuccessStoriesAdd)
+router.get('/smitSuccessStoriesGet', smitSuccessStoriesCon.smitSuccessStoriesGet);
 
 // router.post("/SmitEventadd", upload.array('imgCollection', 6), (req, res, next) => {
 //   console.log(req.body)
