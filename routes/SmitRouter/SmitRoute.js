@@ -22,10 +22,10 @@ const upload = require('../../multer')
 
 
 
-router.post("/SmitFacultyadd", SmitTeachersModelCon.SmitTeachersadd);
-router.get("/SmitFacultyGet", SmitTeachersModelCon.SmitTeachersGet);
-router.put("/SmitFacultyUpdate", SmitTeachersModelCon.SmitTeachersUpdate);
-router.delete("/SmitFacultyDel", SmitTeachersModelCon.SmitTeachersDel);
+router.post("/smitTeachersadd", SmitTeachersModelCon.SmitTeachersadd);
+router.get("/smitTeachersGet", SmitTeachersModelCon.SmitTeachersGet);
+router.put("/smitTeachersUpdate", SmitTeachersModelCon.SmitTeachersUpdate);
+router.delete("/smitTeachersDel", SmitTeachersModelCon.SmitTeachersDel);
 
 // SMIT Student Counts ROUTES
 router.post("/SmitCounAdd", SmitStdCounCon.SmitCounAdd);
