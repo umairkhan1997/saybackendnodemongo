@@ -4,7 +4,6 @@ const SmitTeachersModelCon = require("../../controller/SmitController/SmitTeache
 const SmitStdCounCon = require("../../controller/SmitController/SmitStdCounCon");
 const SmitCoursesCon = require("../../controller/SmitController/SmitCoursesCon");
 const SmitContactCon = require("../../controller/SmitController/SmitContactCon");
-const SmitTeacherCon = require("../../controller/SmitController/SmitTeacherCon");
 const SmitCollaborationCon = require("../../controller/SmitController/SmitCollaborationCon");
 const SmitEventCon = require("../../controller/SmitController/SmitEventCon");
 const SmitNotificationCon = require("../../controller/SmitController/SmitNotificationCon");
@@ -45,9 +44,9 @@ router.get("/SmitContactGet", SmitContactCon.SmitContactGet);
 router.put("/SmitContactUpdate", SmitContactCon.SmitContactUpdate);
 
 ///SMIT TEACHER ROUTES
-router.post("/SmitTeacheradd", SmitTeacherCon.SmitTeacheradd);
-router.get("/SmitTeacherGet", SmitTeacherCon.SmitTeacherGet);
-router.delete("/SmitTeacherDel", SmitTeacherCon.SmitTeacherDel);
+// router.post("/SmitTeacheradd", SmitTeacherCon.SmitTeacheradd);
+// router.get("/SmitTeacherGet", SmitTeacherCon.SmitTeacherGet);
+// router.delete("/SmitTeacherDel", SmitTeacherCon.SmitTeacherDel);
 
 ///Smit Collaboration ROUTES
 router.post("/SmitCollaborationadd", SmitCollaborationCon.SmitCollaborationadd);
