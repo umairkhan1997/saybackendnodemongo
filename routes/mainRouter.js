@@ -28,5 +28,6 @@ router.use('/news', require("./News/NewsRouter"));
 router.use('/donation', require("./donationRouter/donationRoute"));
 router.use('/greenhouse', require("./greenHouseRouter/greenHouseRoute"));
 router.use('/medical', require("./medicalRouter/medicalRoute"));
+router.use('/blood', require("./bloodRouter/bloodRoute"));
 
 module.exports = router;

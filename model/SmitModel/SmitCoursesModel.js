@@ -7,7 +7,7 @@ const SmitCourses = mongoose.Schema({
     required: true,
   },
   courTopic: {
-    type: [String],
+    type: [{}],
     required: true,
   },
   courDuration: {

@@ -12,30 +12,30 @@ DastarNewsAdd = async (req, res) => {
   } else if (!newsTxt) {
     return res.status(400).json(checkField("News Heading Detail"));
   } else {
+    // try {
+    //   const fileStr = newsImgUrl;
+    //   const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+    //     upload_preset: "prime-asset",
+    //   });
+    // console.log(uploadResponse, "successfully image add");
     try {
-      const fileStr = newsImgUrl;
-      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-        upload_preset: "prime-asset",
+      const result = new DastarNewsModel({
+        newsImgUrl,
+        newsHead,
+        newsTxt,
       });
-      // console.log(uploadResponse, "successfully image add");
-      try {
-        const result = new DastarNewsModel({
-          newsImgUrl: uploadResponse.url,
-          newsHead,
-          newsTxt,
-        });
-        await result.save();
-        return res.status(200).json({ message: "Dastarkhwan News Added" });
-        // console.log("Faculty Added");
-      } catch (err) {
-        return res.status(422).send({ message: err.message });
-        // console.log(err, "err");
-      }
+      await result.save();
+      return res.status(200).json({ message: "Dastarkhwan News Added" });
+      // console.log("Faculty Added");
     } catch (err) {
-      // console.error(err, "err");
-      return res.status(500).json({ message: err.message });
-      // console.log(err, "err 500");
+      return res.status(422).send({ message: err.message });
+      // console.log(err, "err");
     }
+    //   } catch (err) {
+    //     // console.error(err, "err");
+    //     return res.status(500).json({ message: err.message });
+    //     // console.log(err, "err 500");
+    //   }
   }
 };
 

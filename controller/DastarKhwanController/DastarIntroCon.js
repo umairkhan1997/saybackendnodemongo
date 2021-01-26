@@ -3,40 +3,36 @@ const cloudinary = require("../../cloudinary");
 const checkField = require("../../FieldValidation/checkField");
 
 DastarIntroAdd = async (req, res) => {
-  const { imgDas, mainHead, headDetail } = req.body;
+  const { videoLink, mainHead, headDetail, count } = req.body;
   // console.log(data, "imgurl");
-  if (!imgDas) {
-    return res.status(400).json(checkField("Image"));
+  if (!videoLink) {
+    return res.status(400).json(checkField("video Link"));
   } else if (!mainHead) {
     return res.status(400).json(checkField("Main Heading"));
   } else if (!headDetail) {
     return res.status(400).json(checkField("Heading Detail"));
+  }
+  else if (!count) {
+    return res.status(400).json(checkField("Count"));
   } else {
+
+    // console.log(uploadResponse, "successfully image add");
     try {
-      const fileStr = imgDas;
-      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-        upload_preset: "prime-asset",
+      const result = new DastarIntroModel({
+        videoLink,
+        mainHead,
+        headDetail,
+        count
       });
-      // console.log(uploadResponse, "successfully image add");
-      try {
-        const result = new DastarIntroModel({
-          imgDas: uploadResponse.url,
-          mainHead,
-          headDetail,
-        });
-        await result.save();
-        return res.status(200).json({ message: "Dastarkhwan Intro Added" });
-        // console.log("Faculty Added");
-      } catch (err) {
-        return res.status(422).send({ message: err.message });
-        // console.log(err, "err");
-      }
+      await result.save();
+      return res.status(200).json({ message: "Dastarkhwan Intro Added" });
+      // console.log("Faculty Added");
     } catch (err) {
-      // console.error(err, "err");
-      return res.status(500).json({ message: err.message });
-      // console.log(err, "err 500");
+      return res.status(422).send({ message: err.message });
+      // console.log(err, "err");
     }
   }
+
 };
 
 DastarIntroGet = async (req, res) => {

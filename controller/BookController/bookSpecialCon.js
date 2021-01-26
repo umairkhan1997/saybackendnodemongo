@@ -5,58 +5,9 @@ const _ = require("underscore");
 const fs = require("fs");
 const upload = require("../../cloudinary").upload;
 const vm = require("v-response");
-BookSpecialAdd = async (req, res) => {
-  // const {
-  //   bookName,
-  //   bookImgUrl,
-  //   bookLang,
-  //   bookAuthor,
-  //   bookPublisher,
-  //   bookDnldUrl,
-  // } = req.body;
-  // // console.log(data, "imgurl");
-  // if (!bookName) {
-  //   return res.status(400).json(checkField("Book Name"));
-  // } else if (!bookImgUrl) {
-  //   return res.status(400).json(checkField("Book Image"));
-  // } else if (!bookLang) {
-  //   return res.status(400).json(checkField("Book Language"));
-  // } else if (!bookAuthor) {
-  //   return res.status(400).json(checkField("Book Author"));
-  // } else if (!bookPublisher) {
-  //   return res.status(400).json(checkField("Book Publisher"));
-  // } else if (!bookDnldUrl) {
-  //   return res.status(400).json(checkField("Book Download URL"));
-  // } else {
-  //   try {
-  //     const fileStr = bookImgUrl;
-  //     const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-  //       upload_preset: "prime-asset",
-  //     });
-  //     // console.log(uploadResponse, "successfully image add");
-  //     try {
-  //       const result = new BookSpecialModel({
-  //         bookImgUrl: uploadResponse.url,
-  //         bookName,
-  //         bookLang,
-  //         bookAuthor,
-  //         bookPublisher,
-  //         bookDnldUrl,
-  //       });
-  //       await result.save();
-  //       return res.status(200).json({ message: "Book Added" });
-  //       // console.log("Faculty Added");
-  //     } catch (err) {
-  //       return res.status(422).send({ message: err.message });
-  //       // console.log(err, "err");
-  //     }
-  //   } catch (err) {
-  //     // console.error(err, "err");
-  //     return res.status(500).json({ message: err.message });
-  //     // console.log(err, "err 500");
-  //   }
-  // }
 
+
+BookSpecialAdd = async (req, res) => {
   const {
     bookName,
     imgCollection,

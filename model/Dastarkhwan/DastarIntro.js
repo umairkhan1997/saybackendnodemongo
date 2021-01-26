@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const DastarIntro = mongoose.Schema({
-  imgDas: {
+  videoLink: {
     type: String,
     required: true,
   },
@@ -13,6 +13,10 @@ const DastarIntro = mongoose.Schema({
     type: String,
     required: true,
   },
+  count: {
+    type: String,
+    required: true,
+  }
 });
 
 const DastarIntroSchema = mongoose.model("DastarIntroSchema", DastarIntro);

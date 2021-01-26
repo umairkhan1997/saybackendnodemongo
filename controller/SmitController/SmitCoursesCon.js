@@ -14,27 +14,28 @@ smitCoursesAdd = async (req, res) => {
   } else if (!courImgUrl) {
     return res.status(400).json(checkField("Course Img"));
   } else {
+    // try {
+    //   const fileStr = req.body.courImgUrl;
+    //   const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+    //     upload_preset: "prime-asset",
+    //   });
     try {
-      const fileStr = req.body.courImgUrl;
-      const uploadResponse = await cloudinary.uploader.upload(fileStr, {
-        upload_preset: "prime-asset",
+      const result = new SmitCoursesScheme({
+        courName,
+        courTopic,
+        courDuration,
+        // courImgUrl: uploadResponse.url,
+        courImgUrl,
       });
-      try {
-        const result = new SmitCoursesScheme({
-          courName,
-          courTopic,
-          courDuration,
-          courImgUrl: uploadResponse.url,
-        });
-        await result.save();
-        res.status(200).json({ success: true, message: "New Course added" });
-      } catch (err) {
-        res.status(422).send({ success: false, message: err.message });
-      }
+      await result.save();
+      res.status(200).json({ success: true, message: "New Course added" });
     } catch (err) {
-      // console.error(err, "err");
-      return res.status(500).json({ message: err.message });
+      res.status(422).send({ success: false, message: err.message });
     }
+    // } catch (err) {
+    //   // console.error(err, "err");
+    //   return res.status(500).json({ message: err.message });
+    // }
   }
 };
 
