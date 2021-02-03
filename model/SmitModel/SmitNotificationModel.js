@@ -20,7 +20,24 @@ const SmitNotification = mongoose.Schema({
     viewForm: {
         type: Boolean,
         required: true,
-    }
+    },
+    courseId: {
+        type: String,
+        required: true,
+    },
+    year: {
+        type: String,
+        required: true,
+    },
+    duration: {
+        type: String,
+        required: true,
+    },
+    admissionLastDate: {
+        type: String,
+        required: true,
+    },
+
 });
 
 const SmitNotificationSchema = mongoose.model("SmitNotificationSchema", SmitNotification);

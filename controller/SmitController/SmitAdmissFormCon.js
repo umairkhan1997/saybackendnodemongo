@@ -4,6 +4,7 @@ const _ = require("underscore");
 const fs = require("fs");
 const upload = require("../../cloudinary").upload;
 const vm = require("v-response");
+const ObjectId = require('mongodb').ObjectID;
 
 SmitAdmissFormadd = async (req, res) => {
     const { } = req.body;
@@ -58,7 +59,30 @@ SmitAdmissFormadd = async (req, res) => {
 
 }
 
+SmitAdmissFormGet = async (req, res) => {
+    // checkField;
+    const result = await SmitAdmissFormModel.find();
+    return res.status(200).json({
+      success: true,
+      data: result,
+    });
+  };
+  
+  SmitAdmissFormGetOne = async (req, res) => {
+    // checkField;
+    const { rollNo} = req.body;
+    console.log(req.body)
+    const result = await SmitAdmissFormModel. findOne({"rollNo": rollNo}, function(err, doc) {
+       
+     });
+    return res.status(200).json({
+      success: true,
+      data: result,
+    });
+  };
+ 
 
 module.exports = {
-    SmitAdmissFormadd
+    SmitAdmissFormadd,
+    SmitAdmissFormGetOne
 }

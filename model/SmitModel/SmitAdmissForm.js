@@ -52,7 +52,7 @@ let smitAdmissForm = new Schema({
 
 smitAdmissForm.plugin(autoIncrement.plugin, {
     model: 'user',
-    field: '_id',
+    field: 'rollNo',
     startAt: 100,
     incrementBy: 1
 });
