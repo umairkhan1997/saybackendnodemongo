@@ -5,7 +5,7 @@ const app = express();
 const mongoose = require("mongoose");
 const port = process.env.PORT || 3000;
 // const homeRoute = require('./routes/HomeRouter/HomeRoute');
-const mainRouter = require("./routes/mainRouter");
+const mainRouter = require("./App/routes/mainRouter");
 const { mogoUrl } = require("./key");
 
 app.use(cors());
