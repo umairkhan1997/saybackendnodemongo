@@ -38,12 +38,14 @@ SmitAdmissFormadd = async (req, res) => {
                             // console.log(saved, 'saved')
                             return res.status(200).json({ success: true, message: "Form Submitted", data: saved });
                         }).catch(error => {
+                            console.log(error, "error")
                             return res
                                 .status(422)
                                 .json({ success: false, message: error.message });
                         })
                 })
             } catch (err) {
+                console.log(err, "errerrerr")
                 return res.status(422).send(err + "err");
             }
         }
@@ -53,6 +55,7 @@ SmitAdmissFormadd = async (req, res) => {
         }
 
     } catch (e) {
+        console.log(err)
         console.log("err :", e);
         return next(e);
     }
