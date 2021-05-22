@@ -71,8 +71,9 @@ router.post('/SaylaniNotificationAdd', upload.array("imgCollection", 12), SmitNo
 router.get('/smitNotificationGet', SmitNotificationCon.smitNotificationGet);
 
 
+
 router.post('/SmitAdmissFormadd', upload.array("imgCollection", 12), SmitAdmissFormCon.SmitAdmissFormadd);
-router.get('/SmitAdmissFormGetOne', SmitAdmissFormCon.SmitAdmissFormGetOne)
+router.post('/SmitAdmissFormGetOne', SmitAdmissFormCon.SmitAdmissFormGetOne)
 
 /////SMIT FACULTY COURSES API
 

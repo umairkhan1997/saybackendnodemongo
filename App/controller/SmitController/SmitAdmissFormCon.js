@@ -6,9 +6,66 @@ const upload = require("../../../cloudinary").upload;
 const vm = require("v-response");
 const ObjectId = require('mongodb').ObjectID;
 
-SmitAdmissFormadd = async (req, res) => {
-    const { } = req.body;
+// SmitAdmissFormadd = async (req, res) => {
+//     const { } = req.body;
+//     console.log(req, 'req.bodyreq.body')
+//     if (!req.files || _.isEmpty(req.files)) {
+//         return res.status(400)
+//             .json(vm.ApiResponse(false, 400, "No file uploaded'"))
+//     }
+//     const files = req.files;
+//     console.log('files', files, 'files')
+//     try {
+//         console.log('try', 'files')
+//         let urls = [];
+//         let multiple = async (path) => await upload(path);
+//         for (const file of files) {
+//             const { path } = file;
+//             console.log("path", file);
+//             const newPath = await multiple(path);
+//             urls.push(newPath);
+//             fs.unlinkSync(path);
+//         }
+//         console.log(req.body)
+//         if (urls) {
+//             let body = req.body;
+//             let bodyw = _.extend(body, { multiple_image: urls });
+//             try {
+//                 SmitAdmissFormModel.nextCount((err, count) => {
+//                     console.log(err, 'errerrerrerrerr')
+//                     let user = new SmitAdmissFormModel(bodyw);
+//                     user.save()
+//                         .then(saved => {
+//                             // console.log(saved, 'saved')
+//                             return res.status(200).json({ success: true, message: "Form Submitted", data: saved });
+//                         }).catch(error => {
+//                             console.log("error :", error);
+//                             return res
+//                                 .status(422)
+//                                 .json({ success: false, message: error.message });
+//                         })
+//                 })
+//             } catch (err) {
+//                 console.log("err :", err.message);
+//                 return res.status(422).send({ message: err.message, success: false });
+//             }
+//         }
+//         if (!urls) {
+//             return res.status(400)
+//                 .json(vm.ApiResponse(false, 400, ""))
+//         }
 
+//     } catch (e) {
+//         console.log("err :", e.message);
+//         return next(e);
+//     }
+
+// }
+
+
+SmitAdmissFormadd = async (req, res) => {
+    console.log(req, 'req.bodyreq.body')
+    const { } = req.body;
     if (!req.files || _.isEmpty(req.files)) {
         return res.status(400)
             .json(vm.ApiResponse(false, 400, "No file uploaded'"))
@@ -38,14 +95,12 @@ SmitAdmissFormadd = async (req, res) => {
                             // console.log(saved, 'saved')
                             return res.status(200).json({ success: true, message: "Form Submitted", data: saved });
                         }).catch(error => {
-                            console.log(error, "error")
                             return res
                                 .status(422)
                                 .json({ success: false, message: error.message });
                         })
                 })
             } catch (err) {
-                console.log(err, "errerrerr")
                 return res.status(422).send(err + "err");
             }
         }
@@ -55,7 +110,6 @@ SmitAdmissFormadd = async (req, res) => {
         }
 
     } catch (e) {
-        console.log(err)
         console.log("err :", e);
         return next(e);
     }
