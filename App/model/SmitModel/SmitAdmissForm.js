@@ -48,6 +48,9 @@ let smitAdmissForm = new Schema({
     courseName: {
         type: String,
     },
+    generatedId: {
+        type: String,
+    }
 });
 
 smitAdmissForm.plugin(autoIncrement.plugin, {

@@ -12,6 +12,7 @@ const smitAFMiddle = require("../../middleware/smitAdmissFormMiddle/smitAFMiddle
 const smitWorkShopCon = require("../../controller/SmitController/smitWorkShop");
 const smitFacultyCourseCon = require("../../controller/SmitController/smitFacultyCourseCon");
 const smitSuccessStoriesCon = require("../../controller/SmitController/smitSuccessStoriesCon")
+const smitRegCrenCon = require("../../controller/SmitController/smitRegCren")
 // const SmitEventModel = require("../../model/SmitModel/SmitEventModel");
 
 
@@ -73,8 +74,9 @@ router.get('/smitNotificationGet', SmitNotificationCon.smitNotificationGet);
 
 
 router.post('/SmitAdmissFormadd', upload.array("imgCollection", 12), SmitAdmissFormCon.SmitAdmissFormadd);
-router.post('/SmitAdmissFormGetOne', SmitAdmissFormCon.SmitAdmissFormGetOne)
-
+router.post('/SmitAdmissFormGetOne', SmitAdmissFormCon.SmitAdmissFormGetOne);
+router.post('/smitAdmissUpdateId', SmitAdmissFormCon.UpdateId);
+router.post('/smitAdmissfindData', SmitAdmissFormCon.findData);
 /////SMIT FACULTY COURSES API
 
 
@@ -86,6 +88,16 @@ router.get('/smitFacultyCourseGet', smitFacultyCourseCon.smitFacultyCourseGet);
 
 router.post('/smitSuccessStoriesAdd', smitSuccessStoriesCon.smitSuccessStoriesAdd)
 router.get('/smitSuccessStoriesGet', smitSuccessStoriesCon.smitSuccessStoriesGet);
+
+
+
+/////SMIT Courses Registration Admin Auth API
+
+router.post('/smitRegauthUserSignUp', smitRegCrenCon.authUserSignUp)
+router.post('/smitRegauthUserLogin', smitRegCrenCon.authUserLogin);
+
+
+
 
 // router.post("/SmitEventadd", upload.array('imgCollection', 6), (req, res, next) => {
 //   console.log(req.body)
