@@ -1,4 +1,4 @@
-const Models = require('../model');
+const Models = require('../model/index');
 
 const getSpecificData = async (modelDb, key, value) => await Models[modelDb].findOne({
     [key]: value
