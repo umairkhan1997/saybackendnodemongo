@@ -29,5 +29,7 @@ router.use('/donation', require("./donationRouter/donationRoute"));
 router.use('/greenhouse', require("./greenHouseRouter/greenHouseRoute"));
 router.use('/medical', require("./medicalRouter/medicalRoute"));
 router.use('/blood', require("./bloodRouter/bloodRoute"));
-
+router.use("/saylaniBranches", require("./BranchesRouter/branchesRoute"));
+router.use("/champions", require("./championRoute/index"));
+router.use("/events", require("./eventRoute/index"));
 module.exports = router;
