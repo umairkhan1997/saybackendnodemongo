@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 const mainRouter = require("./App/routes/mainRouter");
 const { mogoUrl } = require("./key");
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(bd.urlencoded({
   extended: false
 }))
