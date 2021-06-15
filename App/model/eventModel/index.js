@@ -9,8 +9,8 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    eventImg: {
-        type: String,
+    multiple_image: {
+        type: [String],
         required: true,
     },
     eventcategory: {

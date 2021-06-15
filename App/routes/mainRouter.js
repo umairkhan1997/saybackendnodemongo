@@ -32,4 +32,6 @@ router.use('/blood', require("./bloodRouter/bloodRoute"));
 router.use("/saylaniBranches", require("./BranchesRouter/branchesRoute"));
 router.use("/champions", require("./championRoute/index"));
 router.use("/events", require("./eventRoute/index"));
+router.use("/saylaniBank", require("./BankRouter/index"));
+router.use("/saylaniDoorStep", require("./doorStepRoute/index"));
 module.exports = router;

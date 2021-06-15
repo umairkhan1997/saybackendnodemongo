@@ -9,8 +9,8 @@ const championSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    championImg: {
-        type: String,
+    multiple_image: {
+        type: [String],
         required: true,
     },
     championcategory: {

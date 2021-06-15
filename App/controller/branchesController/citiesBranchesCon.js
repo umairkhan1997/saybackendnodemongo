@@ -1,20 +1,21 @@
 const { getAllData, saveNewData } = require('../../helper/index');
-const intBranchModel = require("../../model/branchesModel/intBranch");
+const citiesbranchModel = require("../../model/branchesModel/citiesbranch");
 
-intBranchGet = async (req, res) => {
+
+cityBranchGet = async (req, res) => {
     try {
-        const result = await getAllData('intBranchesMd')
+        const result = await getAllData('cBMd')
         return res.status(200).send({ status: 200, success: true, message: 'The data is fetch successfully .', result })
     } catch (e) {
         return res.status(200).send({ status: 200, message: e.message })
     }
 };
 
-intBranchAdd = async (req, res) => {
+cityBranchAdd = async (req, res) => {
     try {
-        const donate = await saveNewData("intBranchesMd", req.body);
+        const donate = await saveNewData("cBMd", req.body);
         if (donate) {
-            return res.status(200).send({ status: 200, success: true, message: 'Int Branch is succesfully submitted .', donate })
+            return res.status(200).send({ status: 200, success: true, message: 'Branch is succesfully submitted .', donate })
         }
 
     } catch (e) {
@@ -22,16 +23,16 @@ intBranchAdd = async (req, res) => {
     }
 }
 
-intBranchUpdate = async (req, res) => {
+cityBranchUpdate = async (req, res) => {
     try {
-        let catId = await intBranchModel.findById(req.body.id);
+        let catId = await citiesbranchModel.findById(req.body.id);
         if (!catId) {
             return res.status(404).json({
                 success: false,
                 message: "Branch not found",
             });
         }
-        catId = await intBranchModel.findByIdAndUpdate(
+        catId = await citiesbranchModel.findByIdAndUpdate(
             req.body.id,
             req.body,
             {
@@ -51,7 +52,7 @@ intBranchUpdate = async (req, res) => {
 }
 
 module.exports = {
-    intBranchAdd,
-    intBranchGet,
-    intBranchUpdate
+    cityBranchAdd,
+    cityBranchGet,
+    cityBranchUpdate
 };

@@ -13,6 +13,8 @@ db.branchesMd = require("./branchesModel/index");
 db.intBranchesMd = require("./branchesModel/intBranch");
 db.championMd = require("./championsModel/index");
 db.eventMd = require("./eventModel/index");
-
+db.bankDetailMd = require("./bankModel/index");
+db.dsMd = require("./doorStepModel/index");
+db.cBMd = require("./branchesModel/citiesbranch");
 
 module.exports = db;
