@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const bankCon = require("../../Controller/bankController/index");
+const bankCon = require("../../controller/bankController/index");
 
 
 router.get("/bankGet", bankCon.bankDataGet);

@@ -72,12 +72,17 @@ SaylaniNotificationAdd = async (req, res, next) => {
 
 
 smitNotificationGet = async (req, res) => {
-    // checkField;
-    const result = await SmitNotificationSchema.find();
-    return res.status(200).json({
-        success: true,
-        data: result,
-    });
+    try {
+        const result = await SmitNotificationSchema.find();
+        return res.status(200).json({
+            success: true,
+            data: result,
+        });
+    }
+    catch (e) {
+        console.log("err :", e);
+        return next(e);
+    }
 };
 
 module.exports = {
