@@ -1,6 +1,6 @@
 const donationTransactionSchema = require("../../model/DonationModel/index");
 const { getAllData, saveNewData, updateSpecificData, findByKey } = require('../../helper/index');
-
+const axios = require('axios');
 
 
 donationDataGet = async (req, res) => {
@@ -20,10 +20,83 @@ donationAdd = async (req, res) => {
     try {
         const donate = await saveNewData("donation", req.body);
         if (donate) {
-            return res.status(200).send({ status: 200, success: true, message: 'Donation is succesfully submitted .', donate })
+
+            const objBank = {
+                Registration: {
+                    Currency: "AED",
+                    ReturnPath: "https://e-wsm-296e4.web.app/contact",
+                    TransactionHint: "CPT:Y;VCC:Y;",
+                    OrderlD: donate.tid,
+                    Store: "0000",
+                    Terminal: "0000",
+                    Channel: "Web",
+                    Amount: req.body.amount,
+                    Customer: "Demo Merchant",
+                    OrderName: "Paybill",
+                    UserName: "Demo_fY9c",
+                    Password: "Comtrust@20182018",
+                },
+            };
+            const options = {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": 'true',
+                    "Access-Control-Allow-Headers": "*",
+                },
+                data: objBank,
+                url: "https://demo-ipg.ctdev.comtrust.ae:2443",
+            };
+
+            axios(options)
+                .then((ress) => {
+                    // console.log(ress.data.Transaction, "response");
+                    // console.log(ress, "resresresres");
+                    return res.status(200).send({ status: 200, success: true, message: 'Donation is succesfully submitted .', donate, bankResponse: ress.data.Transaction })
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
         }
     } catch (e) {
-        return res.status({ status: 400, message: e.message });
+        return res.status({ status: 200, message: e.message });
+    }
+}
+
+checkDonationResult = (req, res) => {
+    console.log(req.body, 'req.dodyreq.dody')
+    try {
+        const obj = {
+            "Finalization": {
+                "TransactionID": req.body.donationDataTrans,
+                "Customer": "Demo Merchant",
+                "UserName": "Demo_fY9c",
+                "Password": "Comtrust@20182018"
+            }
+        }
+        const options = {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            data: obj,
+            url: "https://demo-ipg.ctdev.comtrust.ae:2443",
+        };
+        axios(options)
+            .then(ress => {
+                console.log(ress.data.Transaction, 'res')
+                return res.status(200).send({ status: 200, success: true, message: 'Donation is succesfull', bankResponse: ress.data.Transaction })
+                //  this.setState({ portalView: res.data })
+            })
+            .catch(err => {
+                console.log(err, '2')
+                return res.status(200).send({ status: 200, message: err.message })
+            })
+    } catch (e) {
+        return res.status(200).send({ status: 200, message: e.message })
     }
 }
 
@@ -76,5 +149,6 @@ module.exports = {
     donationDataGet,
     specificdonationUpdate,
     getSpecificDataDonation,
-    getSortedDataDonation
+    getSortedDataDonation,
+    checkDonationResult
 };

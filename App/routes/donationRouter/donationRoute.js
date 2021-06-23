@@ -17,6 +17,6 @@ router.get("/donationDataGet", donationCon.donationDataGet);
 router.put("/donationDataUpdate", donationCon.specificdonationUpdate);
 router.post("/getSpeDonation", donationCon.getSpecificDataDonation);
 router.post("/getSpeDataDona", donationCon.getSortedDataDonation);
-
+router.post('/checkDonationResult', donationCon.checkDonationResult)
 
 module.exports = router;
