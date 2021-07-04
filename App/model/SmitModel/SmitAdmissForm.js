@@ -50,7 +50,35 @@ let smitAdmissForm = new Schema({
     },
     generatedId: {
         type: String,
-    }
+    },
+    organizationName: {
+        type: String,
+    },
+    position: {
+        type: String,
+    },
+    nameProfessional: {
+        type: String,
+    },
+    laptopAvailable: {
+        type: String,
+    },
+    memberInstitution: {
+        type: String,
+    },
+    membershipNumber: {
+        type: String,
+    },
+    totalExperience: {
+        type: String,
+    },
+    areaOfExperience: {
+        type: String,
+    },
+    rateSkills: {
+        type: String,
+    },
+
 });
 
 smitAdmissForm.plugin(autoIncrement.plugin, {
