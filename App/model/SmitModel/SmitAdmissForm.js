@@ -78,6 +78,12 @@ let smitAdmissForm = new Schema({
     rateSkills: {
         type: String,
     },
+    Modules: {
+        type: String,
+    },
+    ModulePrice: {
+        type: String
+    }
 
 });
 
