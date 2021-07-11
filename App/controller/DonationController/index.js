@@ -24,7 +24,7 @@ donationAdd = async (req, res) => {
             const objBank = {
                 Registration: {
                     Currency: "AED",
-                    ReturnPath: "https://e-wsm-296e4.web.app/contact",
+                    ReturnPath: "https://saylani-website-dd8c0.web.app/contact",
                     TransactionHint: "CPT:Y;VCC:Y;",
                     OrderlD: donate.tid,
                     Store: "0000",
