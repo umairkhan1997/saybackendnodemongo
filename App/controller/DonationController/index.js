@@ -32,7 +32,7 @@ donationAdd = async (req, res) => {
                     Channel: "Web",
                     Amount: req.body.amount,
                     Customer: "Demo Merchant",
-                    OrderName: "Paybill",
+                    OrderName: req.body.ordername,
                     UserName: "Demo_fY9c",
                     Password: "Comtrust@20182018",
                 },
