@@ -5,10 +5,6 @@ const SmitNotification = mongoose.Schema({
         type: String,
         required: true,
     },
-    multiple_image: {
-        type: [String],
-        required: true,
-    },
     courseName: {
         type: String,
         required: true,

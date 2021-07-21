@@ -68,7 +68,8 @@ router.post("/SmitEventadd", upload.array("imgCollection", 12), SmitEventCon.Smi
 
 // SMIT NOTIFICATION
 
-router.post('/SaylaniNotificationAdd', upload.array("imgCollection", 12), SmitNotificationCon.SaylaniNotificationAdd)
+// router.post('/SaylaniNotificationAdd', upload.array("imgCollection", 12), SmitNotificationCon.SaylaniNotificationAdd)
+router.post('/SaylaniNotificationAdd', SmitNotificationCon.SaylaniNotificationAdd)
 router.get('/smitNotificationGet', SmitNotificationCon.smitNotificationGet);
 
 
