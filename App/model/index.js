@@ -16,5 +16,6 @@ db.eventMd = require("./eventModel/index");
 db.bankDetailMd = require("./bankModel/index");
 db.dsMd = require("./doorStepModel/index");
 db.cBMd = require("./branchesModel/citiesbranch");
+db.smCoNoti = require("./SmitModel/SmitNotificationModel");
 
 module.exports = db;

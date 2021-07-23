@@ -71,7 +71,8 @@ router.post("/SmitEventadd", upload.array("imgCollection", 12), SmitEventCon.Smi
 // router.post('/SaylaniNotificationAdd', upload.array("imgCollection", 12), SmitNotificationCon.SaylaniNotificationAdd)
 router.post('/SaylaniNotificationAdd', SmitNotificationCon.SaylaniNotificationAdd)
 router.get('/smitNotificationGet', SmitNotificationCon.smitNotificationGet);
-
+router.put("/smitUpdateCourseAnounce", SmitNotificationCon.updateCourseAnounce);
+router.delete("/smitDeleteCourseAnounce", SmitNotificationCon.deleteCourseAnounce);
 
 
 router.post('/SmitAdmissFormadd', upload.array("imgCollection", 12), SmitAdmissFormCon.SmitAdmissFormadd);
@@ -100,34 +101,5 @@ router.post('/smitRegauthUserLogin', smitRegCrenCon.authUserLogin);
 
 
 
-// router.post("/SmitEventadd", upload.array('imgCollection', 6), (req, res, next) => {
-//   console.log(req.body)
-//   const reqFiles = [];
-//   const url = req.protocol + '://' + req.get('host')
-//   for (var i = 0; i < req.files.length; i++) {
-//     reqFiles.push(url + '/public/' + req.files[i].filename)
-//   }
-
-//   const user = new SmitEventModel({
-//     eventName: req.body.eventName,
-//     eventDet: req.body.eventDet,
-//     eventImgCollection: reqFiles,
-//   });
-
-//   user.save().then(result => {
-//     res.status(201).json({
-//       message: "Done upload!",
-//       userCreated: {
-//         _id: result._id,
-//         imgCollection: result.imgCollection
-//       }
-//     })
-//   }).catch(err => {
-//     console.log(err),
-//       res.status(500).json({
-//         error: err
-//       });
-//   })
-// })
 
 module.exports = router;
