@@ -51,7 +51,7 @@ const donationTransaction = mongoose.Schema({
     },
     donationTime: {
         type: String,
-    },
+    }
 });
 
 donationTransaction.plugin(autoIncrement.plugin, {
