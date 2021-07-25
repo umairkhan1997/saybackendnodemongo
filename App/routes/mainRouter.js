@@ -34,4 +34,5 @@ router.use("/champions", require("./championRoute/index"));
 router.use("/events", require("./eventRoute/index"));
 router.use("/saylaniBank", require("./BankRouter/index"));
 router.use("/saylaniDoorStep", require("./doorStepRoute/index"));
+router.use("/currency", require("./currencyRouter/index"));
 module.exports = router;
